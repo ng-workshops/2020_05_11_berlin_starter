@@ -1,0 +1,16 @@
+{
+  "general.copyright": "Copyright ACME Ltd",
+  "general.lastupdatedAt": "Last updated at ",
+  "impressum": {
+    "title": "Site notice"
+  },
+  "impressum.career": "Career",
+  "impressum.content": "Here is some legal stuff and contact info.",
+  "impressum.days": "{days, plural, =0 {just now} =1 {yesterday} other {# days ago}}",
+  "impressum.developers": "{gender, select, male{Proudly created by Mr } female{Proudly created by Mrs } other{Our developers }} {name}",
+  "impressum.greeting": "Hello {{name}}",
+  "impressum.home": "Home",
+  "impressum.info": "Welcome to my Angular application!<br><strong>This is an amazing app which uses the latest technologies!</strong><br><br>",
+  "impressum.sitemap": "Sitemap",
+  "impressum.title": "Site notice"
+}
