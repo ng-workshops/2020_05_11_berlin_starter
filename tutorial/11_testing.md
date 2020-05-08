@@ -5,9 +5,10 @@
 ```ts
 ...
 
- it(`should have showDetails set to false`, async(() => {
+  it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app: AppComponent = fixture.debugElement.componentInstance;
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toBeUndefined();
     expect(app.showDetails).toBeFalsy();
   }));
 
@@ -20,11 +21,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  MatInputModule,
-  MatSnackBar,
-  MatSnackBarModule
-} from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -39,7 +37,7 @@ describe('CustomerFormComponent', () => {
 
   beforeEach(async(() => {
     routeMock = {
-      paramMap: paramMapTestSubject.asObservable()
+      paramMap: paramMapTestSubject.asObservable(),
     };
 
     TestBed.configureTestingModule({
@@ -50,14 +48,14 @@ describe('CustomerFormComponent', () => {
         ReactiveFormsModule,
         NoopAnimationsModule,
         RouterModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       providers: [
         { provide: ActivatedRoute, useValue: routeMock },
         { provide: Router, useValue: {} },
         { provide: CustomerService, useValue: {} },
-        { provide: MatSnackBar, useValue: {} }
-      ]
+        { provide: MatSnackBar, useValue: {} },
+      ],
     }).compileComponents();
   }));
 
@@ -118,11 +116,25 @@ beforeEach(async(() => {
 ```ts
 ...
 
-beforeEach(() =>
+import { HttpClient } from '@angular/common/http';
+import { inject, TestBed } from '@angular/core/testing';
+import { CustomerService } from './customer.service';
+
+describe('CustomerService', () => {
+  beforeEach(() =>
     TestBed.configureTestingModule({
-      providers: [{ provide: HttpClient, useValue: {} }]
+      providers: [{ provide: HttpClient, useValue: {} }],
     })
   );
+
+  it('should be created', inject(
+    [CustomerService],
+    (service: CustomerService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
+});
+
 
 ...
 ```
@@ -141,4 +153,17 @@ beforeEach(async(() => {
   }));
 
 ...
+```
+
+## src/app/shared/directives/can-click.directive.spec.ts
+
+```ts
+import { CanClickDirective } from './can-click.directive';
+
+describe('CanClickDirective', () => {
+  it('should create an instance', () => {
+    const directive = new CanClickDirective({} as any, {} as any);
+    expect(directive).toBeTruthy();
+  });
+});
 ```

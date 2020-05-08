@@ -9,7 +9,7 @@ import { Injectable, ViewContainerRef } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
 Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 });
 export class HostElementService {
   private _hostElement = new ReplaySubject<ViewContainerRef>(1);
@@ -28,19 +28,17 @@ import {
   Component,
   HostBinding,
   OnInit,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 import { HostElementService } from './shared/modal/host/host-element.service';
-import { SettingsService } from './settings/settings.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   constructor(
-    private settingsService: SettingsService,
     hostElementService: HostElementService,
     hostElement: ViewContainerRef
   ) {
@@ -55,7 +53,7 @@ export class AppComponent implements OnInit {
 import {
   ComponentFactoryResolver,
   Injectable,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 
 import { ModalComponent } from './modal.component';
@@ -78,7 +76,7 @@ export class ModalService {
 
   openGlobal(data: ModalData): Observable<ModalComponent> {
     return this.hostElementService.hostElement$.pipe(
-      map(host => this.createModal(data, host))
+      map((host) => this.createModal(data, host))
     );
   }
 

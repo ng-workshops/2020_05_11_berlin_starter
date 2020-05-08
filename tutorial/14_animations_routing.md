@@ -22,12 +22,22 @@ export const fadeInAnimation = trigger('fadeInAnimation', [
 ```ts
 ...
 
+@Component({
+  animations: [fadeInAnimation],
+  selector: 'app-root',
+  styleUrls: ['./app.component.scss'],
+  templateUrl: './app.component.html',
+})
+
+...
+
 getRouteAnimation(outlet: RouterOutlet) {
     return (
       outlet &&
       outlet.activatedRouteData &&
       outlet.activatedRouteData['animation']
     )
+}
 
 ...
 ```
@@ -36,18 +46,20 @@ getRouteAnimation(outlet: RouterOutlet) {
 
 ```html
 ...
-<div class="{{ currentTheme }}" [@fadeInAnimation]="getRouteAnimation(route)">
+<div [@fadeInAnimation]="getRouteAnimation(route)">
   <router-outlet #route="outlet"></router-outlet>
 </div>
 ...
 ```
 
-## src/app/home/home-routing.module.ts
+## src/app/app-routing.module.ts
 
 ```ts
 ...
-const routes = [
-  { path: 'home', component: HomeComponent, data: { animation: 'home' } }
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, data: { animation: 'home' } },
+  { path: '**', component: HomeComponent },
 ];
 ...
 ```
@@ -73,5 +85,28 @@ const routes: Routes = [
     data: { animation: 'customer' }
   }
 ];
+...
+```
+
+### src/app/app.module.ts
+
+```ts
+...
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    CustomersModule,
+    HomeModule,
+    AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+  ],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+
 ...
 ```

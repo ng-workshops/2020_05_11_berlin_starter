@@ -25,7 +25,7 @@ export class Customer {
       numberOfOrders: formBuilder.control(
         customer.numberOfOrders || 0,
         Validators.min(0)
-      )
+      ),
     });
   }
 }
@@ -57,14 +57,14 @@ export class Customer {
 
 ```ts
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup } from '@angular/forms';
 import { Customer } from '../customer';
 
 @Component({
   selector: 'app-customer-form',
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  styleUrls: ['./customer-form.component.scss'],
 })
 export class CustomerFormComponent implements OnInit {
   form: FormGroup;
@@ -81,7 +81,7 @@ export class CustomerFormComponent implements OnInit {
     console.table(data);
 
     this.snackBar.open(`Customer ${data.name} saved successfully.`, '', {
-      duration: 2000
+      duration: 2000,
     });
   }
 
@@ -145,23 +145,36 @@ export class CustomerFormComponent implements OnInit {
 ## src/app/customers/customers.module.ts
 
 ```ts
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { CustomerComponent } from './customer/customer.component';
+
 @NgModule({
   declarations: [
     CustomerDetailsComponent,
     CustomerComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
   ],
   exports: [CustomerComponent, CustomerFormComponent],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatSnackBarModule,
     MatInputModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+  ],
 })
 export class CustomersModule {}
 ```

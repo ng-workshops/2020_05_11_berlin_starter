@@ -20,7 +20,7 @@
 @NgModule({
   declarations: [CustomerDetailsComponent, CustomerComponent],
   exports: [CustomerComponent],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class CustomersModule {}
 ```
@@ -33,7 +33,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
 })
 export class CustomerComponent {
   @Input() customer;
@@ -79,12 +79,13 @@ export class CustomerComponent {
 ## src/app/customers/customers.module.ts
 
 ```ts
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [CommonModule, MatButtonModule, MatIconModule],
   declarations: [CustomerComponent, CustomerDetailsComponent],
-  exports: [CustomerComponent]
+  exports: [CustomerComponent],
 })
 export class CustomersModule {}
 ```

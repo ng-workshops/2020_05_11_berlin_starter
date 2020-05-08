@@ -8,16 +8,16 @@
 ...
 
 imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    CustomersRoutingModule,
-    ReactiveFormsModule,
+   CommonModule,
     MatButtonModule,
     MatIconModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatSnackBarModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CustomersRoutingModule,
+    HttpClientModule,
   ]
 
   ...
@@ -34,7 +34,7 @@ import { environment } from '../../environments/environment';
 import { Customer } from './customer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
   private readonly endpoint = environment.endpoints.customers;
@@ -134,7 +134,7 @@ import {
   switchMap,
   startWith,
   withLatestFrom,
-  map
+  map,
 } from 'rxjs/operators';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
@@ -142,7 +142,7 @@ import { CustomerService } from '../customer.service';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  styleUrls: ['./customer-list.component.scss'],
 })
 export class CustomerListComponent implements OnInit {
   customers$: Observable<Customer[]>;
@@ -165,8 +165,8 @@ export class CustomerListComponent implements OnInit {
 
     this.customers$ = merge(this.search$, this.reload$).pipe(
       withLatestFrom(this.search$),
-      map(value => value[1]),
-      switchMap(value => {
+      map((value) => value[1]),
+      switchMap((value) => {
         return this.customerService.getAll(value);
       })
     );

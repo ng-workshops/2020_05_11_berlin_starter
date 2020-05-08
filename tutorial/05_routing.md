@@ -4,7 +4,7 @@
 
 > ng generate component home
 
-> create file src/app/app-routing.module.ts
+> ng generate module app-routing --flat=true --module app
 
 ## src/app/app-routing.module.ts
 
@@ -16,34 +16,17 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
 ```
 
-## src/app/app.module.ts
-
-```ts
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    CustomersModule,
-    HomeModule,
-    AppRoutingModule
-  ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
-```
-
-> create file src/app/customers/customers-routing.module.ts
+> ng generate module customers/customers-routing --flat=true --module customers
 
 ## src/app/customers/customers-routing.module.ts
 
@@ -56,39 +39,14 @@ import { CustomerComponent } from './customer/customer.component';
 const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
   { path: 'customers/:id', component: CustomerFormComponent },
-  { path: 'customers/new', component: CustomerFormComponent }
+  { path: 'customers/new', component: CustomerFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class CustomersRoutingModule {}
-```
-
-## src/app/customers/customers.module.ts
-
-```ts
-@NgModule({
-  declarations: [
-    CustomerDetailsComponent,
-    CustomerComponent,
-    CustomerFormComponent
-  ],
-  exports: [CustomerComponent, CustomerFormComponent],
-  imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    CustomersRoutingModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatInputModule,
-    MatFormFieldModule
-  ]
-})
-export class CustomersModule {}
 ```
 
 ## src/app/app.component.html
@@ -150,7 +108,7 @@ export class HomeComponent {
     id: 1,
     name: 'Simpson',
     firstname: 'Homer',
-    hobbies: ['eat', 'sleep', 'beer']
+    hobbies: ['eat', 'sleep', 'beer'],
   };
 
   callMe(phone) {
@@ -164,7 +122,7 @@ export class HomeComponent {
 ```ts
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class HomeModule {}
 ```

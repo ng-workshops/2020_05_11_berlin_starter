@@ -6,7 +6,7 @@
     "module": "commonjs",
     "emitDecoratorMetadata": true,
     "allowJs": true,
-    "types": ["jasmine", "node"]
+    "types": ["jasmine", "node", "jest"]
   },
   "files": ["polyfills.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]

@@ -44,9 +44,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalData } from './modal.model';
 
 @Component({
-  selector: 'modal',
+  selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
   @Input()
@@ -72,7 +72,7 @@ export class ModalComponent implements OnInit {
 import {
   ComponentFactoryResolver,
   Injectable,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 
 import { ModalComponent } from './modal.component';
@@ -106,7 +106,7 @@ export class ModalService {
 
 ## src/app/shared/module.ts
 
-Add MatCardModule, MatButtonModule to imports
+Add MatCardModule, MatButtonModule to imports and exports
 
 ```ts
 imports: [
@@ -116,10 +116,11 @@ imports: [
     MatCardModule,
     MatButtonModule
   ],
+exports: [
+  MatCardModule,
+  MatButtonModule
+]
 ```
-
-Add ModalComponent in entry components
-`entryComponents: [ModalComponent]`
 
 ## src/app/home/home.component.html
 
@@ -138,7 +139,7 @@ import { ModalService } from '../shared/modal/modal.service';
 @Component({
   selector: 'app-home',
   styleUrls: ['./home.component.scss'],
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent {
   message = 'INIT';
