@@ -8,13 +8,13 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChange
+  SimpleChange,
 } from '@angular/core';
 
 @Component({
-  selector: 'info-box',
+  selector: 'app-info-box',
   templateUrl: './info-box.component.html',
-  styleUrls: ['./info-box.component.scss']
+  styleUrls: ['./info-box.component.scss'],
 })
 export class InfoBoxComponent implements OnInit, OnChanges {
   private _name: string;

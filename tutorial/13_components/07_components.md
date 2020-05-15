@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
   // Observable string source
@@ -36,15 +36,15 @@ import {
   SimpleChange,
   Output,
   EventEmitter,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { MessageService } from '../message.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'info-box',
+  selector: 'app-info-box',
   templateUrl: './info-box.component.html',
-  styleUrls: ['./info-box.component.scss']
+  styleUrls: ['./info-box.component.scss'],
 })
 export class InfoBoxComponent implements OnInit, OnChanges, OnDestroy {
   private _name: string;
@@ -69,7 +69,7 @@ export class InfoBoxComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.messageService.listener$.subscribe(
-      msg => (this.message = msg)
+      (msg) => (this.message = msg)
     );
   }
 
@@ -131,7 +131,7 @@ import { MessageService } from './message.service';
 @Component({
   selector: 'app-home',
   styleUrls: ['./home.component.scss'],
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent {
   message = 'INIT';

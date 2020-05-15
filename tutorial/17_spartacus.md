@@ -1,8 +1,11 @@
 # Create new Angular App with Spartacus
 
-> ng new mystore —style=scss --routing
+> ng new mystore --style=scss --routing
+
+> cd mystore
 
 > ng add @spartacus/schematics --pwa --ssr
+
 > ng add @angular/localize
 
 ## src/app/app.module.ts
@@ -24,7 +27,8 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
-          baseUrl: 'https://localhost:9002',
+          baseUrl:
+            'https://api.c39j2-walkersde1-d3-public.model-t.cc.commerce.ondemand.com',
           prefix: '/rest/v2/',
         },
       },

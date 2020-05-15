@@ -28,13 +28,13 @@ import {
   OnChanges,
   SimpleChange,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 
 @Component({
-  selector: 'info-box',
+  selector: 'app-info-box',
   templateUrl: './info-box.component.html',
-  styleUrls: ['./info-box.component.scss']
+  styleUrls: ['./info-box.component.scss'],
 })
 export class InfoBoxComponent implements OnInit, OnChanges {
   private _name: string;
@@ -102,7 +102,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   styleUrls: ['./home.component.scss'],
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent {
   message = 'INIT';

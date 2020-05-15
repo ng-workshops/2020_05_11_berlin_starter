@@ -58,6 +58,7 @@ https://github.com/angular/angular-cli/wiki/stories-create-library
 - https://www.learnrxjs.io
 - [When to unsubscribe in Angular](https://netbasal.com/when-to-unsubscribe-in-angular-d61c6b21bad3)
 - [Rxjs marbles](https://rxmarbles.com/) Marble diagrams for rxjs operators
+- [Rxjs Fruits](https://www.rxjs-fruits.com/subscribe) A game to learn some rxjs stuff (german)
 
 ### Vs Code
 
@@ -104,6 +105,7 @@ https://nrwl.io/nx
 - [Augury](https://augury.angular.io) Chrome Extension for debugging and profiling Angular apps
 - [ngrev](https://github.com/mgechev/ngrev) Tool will generate a graphical representation of the component structure of your Angular app
 - [Angular Console](https://angularconsole.com) The UI for the angular-cli
+- [WhatFont](https://chrome.google.com/webstore/detail/what-font-find-font/djgfpbegnihdgbngpmhjnlchgglngcdn) A small chrome extension to see the font which is used at an element in the website
 
 ### Styling
 
